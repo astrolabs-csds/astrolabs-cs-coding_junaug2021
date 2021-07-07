@@ -279,8 +279,67 @@ print( coffeeMachine('black', 'large', 'oat', 'foam') )
 """
 
 
-# ::: (9) Tuples, Sets, Dictionaries :::
+# ::: (9) Lists, Tuples, Sets, Dictionaries :::
 
+# Lists
+# Mutable: can add or remove elements from the list
+# methods: .append(), .insert(), .remove(), .pop(), etc.
+# https://www.w3schools.com/python/python_ref_list.asp
+"""
+products = ['Apple Macbook Pro', 'ASUS VivoBook', 'Lenovo ThinkPad']
+products[1]
+"""
 
+# Tuples
+# Immutable: cannot add or remove elements from the tuple
+# methods: .count(), .index()
+# https://www.w3schools.com/python/python_ref_tuple.asp
+"""
+emirates = ('Abu Dhabi','Dubai','Sharjah','Ajman','Ras Al Khaimah','Umm Al Quwain','Fujairah')
+emirates[1]
+"""
+
+# Sets
+# Mutable: can add or remove elements from the list
+# Unique values only
+# methods: .add(), .clear(), .difference(), .intersection(), .pop(), .remove()
+# https://www.w3schools.com/python/python_ref_set.asp
+"""
+airports = {'dxb', 'ruh', 'jfk', 'yyz', 'lax', 'cbj'}
+airports[0]
+"""
+
+# Dictionaries
+# Mutable: can add or remove elements from the list
+# Unique keys only
+# Keys are required
+# https://www.w3schools.com/python/python_ref_dictionary.asp
+"""
+airportsDb = {
+    'dxb': 'Dubai International Airport',
+    'ruh': 'King Khalid International Airport',
+    'jfk': 'John F Kennedy International Airport',
+    'yyz': 'Pearson International Airport',
+    'lax': 'Los Angeles International Airport',
+    'cjb': 'Coimbatore International Airport',
+    'del': 'Indira Ghandi International Airport'
+}
+"""
+
+# Square-bracket notation (if spaces in key)
+# airportsDb['yyz']
+# Dot notation (default)
+# airportsDb.yyz
+
+"""
+maf = {
+    'Carrefour': ['DCC','MCC','SCC'],
+    'Toyota': ['Festival City'],
+    'VOX Cinemas': ['DCC','Festival']
+}
+
+maf['Carrefour'][2]
+maf['Vox Cinemas']
+"""
 
 # ::: (10) Classes :::
