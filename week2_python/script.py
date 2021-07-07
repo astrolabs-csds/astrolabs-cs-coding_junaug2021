@@ -342,4 +342,37 @@ maf['Carrefour'][2]
 maf['Vox Cinemas']
 """
 
+
 # ::: (10) Classes :::
+class Car:
+
+    # Properties (variables in a class)
+    color = "White"
+    brand = None
+    numberOfSeats = 0
+    speed = 0
+    country = None
+    manufYear = None
+
+    # Methods (functions in a class)
+    def __init__(self, colorArg, brandArg, countryArg, manufYear):
+        self.color = colorArg
+        self.brand = brandArg
+        self.country = countryArg
+        self.manufYear = manufYear
+
+    def accelerate(self):
+        self.speed = 100
+    
+    def brake(self):
+        self.speed = 0
+
+    def transmission(self):
+        print()
+    
+    def reverse(self):
+        self.accelerate()
+
+
+hondaCivic = Car("Blue", "Honda", "Japan", "2021")
+mercedesG65 = Car("Black", "Mercedes Benz", "Germany", "2021")
