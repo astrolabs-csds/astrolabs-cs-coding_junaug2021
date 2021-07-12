@@ -194,6 +194,7 @@ building['Gym']['Personel'][1] = building['Gym']['Personel'][1].replace('Grizzly
 // Example outcome:
 // pizza = ['Tomatoes','Olives','Chicken']
 
+/*
 const ingredients = [
     'Tomatoes',
     'Olives',
@@ -210,6 +211,43 @@ const ingredients = [
 ];
 
 const pizza = [];
+*/
 
 
+// ::: (8) Functions :::
+// function addTwoNumbers(numA, numB) {
+//     let theSum = numA + numB;
+//     return theSum;
+// }
 
+// console.log( addTwoNumbers(5,5) );
+
+
+products = {
+    'Asus Vivibook': 4000,
+    'Macbook Pro': 7000,
+    'Apple Watch': 1500,
+    'Samsung S21': 5000,
+    'Apple Airpods': 700
+}
+
+const cart = []
+
+function shoppingStart(userReponse) {
+    
+    // Prompt the user for (a) product or (b) 'done'
+
+    // If they enter a product
+    
+        // add its price to 'cart'
+        // Hint: use products[userResponse]
+
+        // Run the function again
+
+    // Else if they enter 'done'...
+
+        // Calculate the price of the items in cart
+    
+        // return the total proce
+
+}
