@@ -223,31 +223,48 @@ const pizza = [];
 // console.log( addTwoNumbers(5,5) );
 
 
-products = {
-    'Asus Vivibook': 4000,
-    'Macbook Pro': 7000,
-    'Apple Watch': 1500,
-    'Samsung S21': 5000,
-    'Apple Airpods': 700
-}
 
-const cart = []
+// ::: (9) String Methods :::
+// .toUpperCase()                           Converts all the letters in a strings to uppercase     
+// .toLowerCase()                           Converts all the letters in a strings to lowercase
+// .replace(original, replacement)          Replaces the first substring in a string    
+// .replaceAll(original, replacement)       Replaces all of substrings in a string        
+// .includes()                              Searches for a substring and returns true if match found
+// .match(regex pattern)                    Uses a Regular Expression to find a string
+// .slice(startIndex, endIndex)             Return a slice of the string with given indices 
+// .toString()                              Cast a number to a string
+// .trim()                                  Removes whitespace at the start and end of a string
+// .split(delimeter)                        Will split a string by a specified delimeter and return an Array           
 
-function shoppingStart(userReponse) {
-    
-    // Prompt the user for (a) product or (b) 'done'
 
-    // If they enter a product
-    
-        // add its price to 'cart'
-        // Hint: use products[userResponse]
+// Example with .split()
+/*
+let product = "nokia 3310";
+let productInfo = product.split(" ")        // "nokia 3310" ----> ["nokia","3310"]
+productInfo[0]  // "nokia"
+productInfo[1]  // "3310"
+*/
 
-        // Run the function again
 
-    // Else if they enter 'done'...
+// Example with .toUpperCase*()
+/*
+let countryCodes = ['uae','uk','usa','ksa'];
+console.log(countryCodes[0].toUpperCase())  // uae ---> UAE
+*/
 
-        // Calculate the price of the items in cart
-    
-        // return the total proce
 
-}
+// Example with .replace()
+/*
+product = product.replace("3310", "8800");  // "nokia 3310" ----> "nokia 8800"
+*/
+
+
+// Example with .slice()
+/*
+let address = "AstroLabs, Cluster R, Jumeirah Lakes Towers, Dubai, UAE";
+address.slice(45,50);       // ---> "Dubai"
+*/
+
+
+// ::: (10) More Array Methods :::                 
+// .join()
