@@ -283,6 +283,9 @@ address.slice(45,50);       // ---> "Dubai"
 
 /*
 Example with .forEach()
+*/
+
+/*
 let airports = [
     "dxb",
     "auh",
@@ -291,8 +294,37 @@ let airports = [
     "fra"
 ];
 
-let airportsFixed = [];
 
+`<ul>`
+for(let index = 0; index < airports.length; index++) {
+    `<li>` + airports[index] + `</li>`
+}
+`<ul>`
+
+
+`<ul>`
+for( index in airports ) {
+    `<li>` + airports[index]+ `</li>`
+}
+`<ul>`
+
+'<ul>'
+airports.forEach(
+    function (someString) {
+        html += '<li>' + someString + '</li>'
+    }
+)
+'</ul>'
+*/
+
+
+
+
+
+// Example 2
+
+/*
+let airportsFixed = [];
 // For each element in the 'airports' array...
 airports.forEach(
 
@@ -314,3 +346,28 @@ airports.forEach(
 //     }
 //     return level2();
 // }
+
+
+
+// ::: (11) Arrow Functions :::   
+/*
+// Standard Function (can also be used Constructor)
+function addTwoNumbers(numA, numB) {
+    return numA + numB;
+}
+
+
+
+// Anonymous Function
+let addTwoNumbers = (numA, numB) => {
+    return numA + numB;
+}
+
+
+// Example of Using Anonymous Arrow Function to Create List Items
+'<ul>'
+airports.forEach(
+    destination => '<li class="flight-destination">' + destination + '</li>'
+)
+'</ul>'
+*/
