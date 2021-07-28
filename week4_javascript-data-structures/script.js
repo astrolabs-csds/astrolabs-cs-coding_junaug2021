@@ -371,3 +371,155 @@ airports.forEach(
 )
 '</ul>'
 */
+
+/*
+let olympicMedals = [
+    'US',
+    'China',
+    'China',
+    'US',
+    'China',
+    'China',
+    'China',
+    'China',
+    'China',
+    'China',
+    'China',
+    'China',
+    'US',
+    'China'
+];
+
+
+
+let filteredResults = olympicMedals.filter( 
+    function(country) {
+        if (country == 'China') {
+            return country;
+        }
+    }
+);
+ 
+console.log(filteredResults.length)
+*/
+
+// Example with .filter()
+/*
+const movies = [
+    {
+        title: 'The Godfather',
+        genre: 'Crime Thriller'
+    },
+    {
+        title: 'Prometheus',
+        genre: 'SciFi'
+    },
+    {
+        title: 'Interstellar',
+        genre: 'SciFi'
+    },
+    {
+        title: 'Anabelle',
+        genre: 'Horror'
+    },
+    {
+        title: 'The Intern',
+        genre: 'Comedy'
+    }
+];
+
+let selectedMovies = movies.filter(
+    (option) => {
+        if(option['genre'] == 'SciFi') {
+            return option;
+        }
+        else if(option['genre'] == 'Comedy') {
+            return option;
+        }
+    }
+)
+
+console.log(selectedMovies);
+*/
+
+
+
+
+
+
+let companyNames = [
+    'apple',
+    'samsung',
+    'siemens',
+    'nokia',
+    'lenovo'
+];
+
+
+
+
+
+
+// Using .forEach to Capitalize companyNames
+
+// Long way
+/*
+companyNames.forEach(
+    function(elemVal, elemIndex) {
+        // Capitalize the word 'apple'
+        let result = companyNames[elemIndex][0].toUpperCase() + companyNames[elemIndex].slice(1);
+        console.log(result);
+    }
+);
+*/
+
+
+// Shorter way
+/*
+companyNames.forEach(
+    function(elemVal) {
+        let result = elemVal[0].toUpperCase() + elemVal.slice(1);
+        console.log(result);
+    }
+);
+*/
+
+
+// Shortest way
+/*
+companyNames.forEach(
+    elemVal => {
+        let result = elemVal[0].toUpperCase() + elemVal.slice(1);
+        console.log(result);
+    }
+);
+*/
+
+
+// Using .map() with arrow syntax
+// Long way
+/*
+let companyNamesFixed = companyNames.map(
+    (elemVal) => {
+        let result = elemVal[0].toUpperCase() + elemVal.slice(1);
+        return result;
+    }
+);
+*/
+
+// Shorter way
+/*
+let companyNamesFixed = companyNames.map(
+    elemVal => {
+        let result = elemVal[0].toUpperCase() + elemVal.slice(1);
+        return result;
+    }
+);
+*/
+
+// Shortest Way
+/*
+let companyNamesFixed = companyNames.map(
+    elemVal => elemVal[0].toUpperCase() + elemVal.slice(1)
+);
+*/
