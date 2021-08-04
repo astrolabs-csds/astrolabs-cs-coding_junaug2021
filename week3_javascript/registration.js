@@ -51,7 +51,7 @@ function registerUser() {
                 console.log(response.json())
             }
         )
-        .then(
+        .catch(
             (json) => {
                 console.log('from backend', json)
             }
