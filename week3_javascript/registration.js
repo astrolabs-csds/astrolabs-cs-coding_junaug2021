@@ -9,25 +9,54 @@ function registerUser() {
     const checkboxElement = document.getElementsByClassName('checkbox');
 
     // (3) Read the '.value' of every single text field
-    let firstname = textElements[0].value;  // John
-    let lastname = textElements[1].value;   // Doe
+    let firstName = textElements[0].value;  // John
+    let lastName = textElements[1].value;   // Doe
     let email = textElements[2].value;
     let password = textElements[3].value;
-    let phone = textElements[4].value;
+    let phoneNumber = textElements[4].value;
 
     let tcs = checkboxElement[0].checked;
 
 
     if( tcs === true) {
         // (4) Use '.push()' to out every text inside the 'registrationForm'
-        registrationForm.push(firstname);
-        registrationForm.push(lastname);
+        registrationForm.push(firstName);
+        registrationForm.push(lastName);
         registrationForm.push(email);
         registrationForm.push(password);
-        registrationForm.push(phone);
+        registrationForm.push(phoneNumber);
+
+        const formData = {
+            firstName,
+            lastName,
+            email,
+            password,
+            phoneNumber
+        }
 
         // (5) Use 'alert()' to confirm the registrationForm
-        alert(registrationForm);
+        // alert(registrationForm);
+        fetch(
+            'http://localhost:3001/users/create',
+            {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }
+        )
+        .then(
+            (response)=>{
+                console.log(response.json())
+            }
+        )
+        .then(
+            (json) => {
+                console.log('from backend', json)
+            }
+        )
+        
     } else {
         alert("Please read and accept the terms & conditions.")
     }

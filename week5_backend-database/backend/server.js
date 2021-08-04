@@ -2,6 +2,9 @@
 const express = require('express');
 // Import body-parser to parse the BODY of an HTTP request
 const bodyParser = require('body-parser');
+// Import CORS (Cross-Origin Resource Sharing) to allow external 
+// HTTP requests to Express
+const cors = require('cors');
 // This will make 'server' an object with methods 
 // for server operations
 const server = express();
@@ -11,6 +14,8 @@ const server = express();
 server.use( bodyParser.urlencoded({ extended: false }) );
 // Tell express to parse JSON data
 server.use( bodyParser.json() );
+// Tell express to allow external HTTP requests
+server.use(cors());
 
 // Import mongoose to connect to MongoDB Atlas
 const mongoose = require('mongoose');
@@ -84,7 +89,9 @@ server.post(
             {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
-                email: req.body.email
+                email: req.body.email,
+                password: req.body.password,
+                phoneNumber: req.body.phoneNumber
             }
         )
         .then(
@@ -110,12 +117,12 @@ server.post(
         ProductModel
         .create(
             {
-                brand: "Panasonic",
-                model: "Vacuum Vvvvv",
-                origin: "Japan",
-                description: "vvvvvvvvvvv",
-                color: "Red",
-                price: 750
+                brand: req.body.brand,
+                model: req.body.model,
+                origin: req.body.origin,
+                description: req.body.description,
+                color: req.body.color,
+                price: req.body.price
             }
         )
         .then(
