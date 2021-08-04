@@ -1,16 +1,27 @@
 // Import the express function.
 const express = require('express');
+// Import body-parser to parse the BODY of an HTTP request
+const bodyParser = require('body-parser');
 // This will make 'server' an object with methods 
 // for server operations
 const server = express();
 
-// Import the Model
-const UserModel = require('./models/UserModel.js');
+
+// Parse urlencoded bodies and where the Content-Type header matches the type option
+server.use( bodyParser.urlencoded({ extended: false }) );
+// Tell express to parse JSON data
+server.use( bodyParser.json() );
 
 // Import mongoose to connect to MongoDB Atlas
 const mongoose = require('mongoose');
 
-const connectionString = "mongodb+srv://admin01:db12345@cluster0.oikl7.mongodb.net/astro_jul2021?retryWrites=true&w=majority";
+// Import the Model
+const UserModel = require('./models/UserModel.js');
+const ProductModel = require('./models/ProductModel.js');
+
+
+// NOTE: Make sure to enter your connection string.
+const connectionString = "";
 
 const connectionConfig = {
     useNewUrlParser: true,
@@ -18,7 +29,7 @@ const connectionConfig = {
 };
 
 mongoose
-.connect(connectionString, connectionConfig)
+.connect(connectionString, connectionConfig)  // returns Promise
 .then(
     () => {
         console.log('DB is connected');
@@ -40,7 +51,8 @@ server.get(
     }
 );
 
-
+// Get all of the users
+// http://localhost:3001/users
 server.get('/users', 
     (req, res) => {
 
@@ -53,13 +65,71 @@ server.get('/users',
         )
         .catch(
             (error) => {
-                console.log(error)
+                console.log(error);
             }
         )
 
     }
-)
+);
 
+// Post a new user
+// http://localhost:3001/users/create
+server.post(
+    '/users/create',
+    (req, res) => {
+
+        // Use the UserModel to create a new document
+        UserModel
+        .create(
+            {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email
+            }
+        )
+        .then(
+            (dbDocument) => {
+                res.send(dbDocument);
+            }
+        )
+        .catch(
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
+);
+
+// Post a new product
+// http://localhost:3001/products/create
+server.post(
+    '/products/create',
+    (req, res) => {
+
+        // Use the UserModel to create a new document
+        ProductModel
+        .create(
+            {
+                brand: "Panasonic",
+                model: "Vacuum Vvvvv",
+                origin: "Japan",
+                description: "vvvvvvvvvvv",
+                color: "Red",
+                price: 750
+            }
+        )
+        .then(
+            (dbDocument) => {
+                res.send(dbDocument);
+            }
+        )
+        .catch(
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
+);
 
 // The .listen() will connect the server
 // to an available Port
@@ -67,6 +137,6 @@ server.get('/users',
 server.listen(
     3001,
     () => {
-        console.log('Server is running on http://localhost:3001/')
+        console.log('Server is running on http://localhost:3001/');
     }
 )
