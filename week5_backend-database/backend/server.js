@@ -1,7 +1,5 @@
 // Import the express function.
 const express = require('express');
-// Import body-parser to parse the BODY of an HTTP request
-const bodyParser = require('body-parser');
 // Import CORS (Cross-Origin Resource Sharing) to allow external 
 // HTTP requests to Express
 const cors = require('cors');
@@ -11,9 +9,9 @@ const server = express();
 
 
 // Parse urlencoded bodies and where the Content-Type header matches the type option
-server.use( bodyParser.urlencoded({ extended: false }) );
+server.use( express.urlencoded({ extended: false }) );
 // Tell express to parse JSON data
-server.use( bodyParser.json() );
+server.use( express.json() );
 // Tell express to allow external HTTP requests
 server.use(cors());
 
@@ -21,8 +19,8 @@ server.use(cors());
 const mongoose = require('mongoose');
 
 // Import the Model
-const UserModel = require('./models/UserModel.js');
-const ProductModel = require('./models/ProductModel.js');
+const userRoutes = require('./routes/user-routes.js');
+const productRoutes = require('./routes/product-routes.js');
 
 
 // NOTE: Make sure to enter your connection string.
@@ -56,87 +54,15 @@ server.get(
     }
 );
 
-// Get all of the users
-// http://localhost:3001/users
-server.get('/users', 
-    (req, res) => {
 
-        UserModel
-        .find()
-        .then(
-            (dbDocument)=>{
-                res.send(dbDocument)
-            }
-        )
-        .catch(
-            (error) => {
-                console.log(error);
-            }
-        )
-
-    }
+server.use(
+    '/users', userRoutes
 );
 
-// Post a new user
-// http://localhost:3001/users/create
-server.post(
-    '/users/create',
-    (req, res) => {
-
-        // Use the UserModel to create a new document
-        UserModel
-        .create(
-            {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email,
-                password: req.body.password,
-                phoneNumber: req.body.phoneNumber
-            }
-        )
-        .then(
-            (dbDocument) => {
-                res.send(dbDocument);
-            }
-        )
-        .catch(
-            (error) => {
-                console.log(error);
-            }
-        );
-    }
+server.use(
+    '/products', productRoutes
 );
 
-// Post a new product
-// http://localhost:3001/products/create
-server.post(
-    '/products/create',
-    (req, res) => {
-
-        // Use the UserModel to create a new document
-        ProductModel
-        .create(
-            {
-                brand: req.body.brand,
-                model: req.body.model,
-                origin: req.body.origin,
-                description: req.body.description,
-                color: req.body.color,
-                price: req.body.price
-            }
-        )
-        .then(
-            (dbDocument) => {
-                res.send(dbDocument);
-            }
-        )
-        .catch(
-            (error) => {
-                console.log(error);
-            }
-        );
-    }
-);
 
 // The .listen() will connect the server
 // to an available Port
